@@ -1,0 +1,10 @@
+ .username{
+ 	color: red
+ }
+ .left{
+ 	max-width: 700px;
+ 	width: 100%;
+ }
+ .card-title{
+ 	display: inline;
+ }

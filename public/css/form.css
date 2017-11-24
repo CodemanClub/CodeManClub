@@ -1,0 +1,9 @@
+body{
+    background-color: #eff2f5;
+}
+.form-center{
+
+    margin:50px auto;
+    width: 100%;
+    max-width: 500px;
+}
