@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Sameask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,13 +33,26 @@ class QuestionController extends Controller
     //查看问题详情
     public function getContent($id){
         $question = Question::find($id);
-        $answers = $question->answers;
-
+        $answers = $question->answers()->orderBy('helped_men_num','desc')->get();
         return view('web.question.content.index',['question'=>$question,'answers'=>$answers]);
 
     }
     //查看问题列表
-    public function getList(){
-        return view('web.question.list.index',['questions'=>Question::get()]);
+    public function getList($column){
+        return view('web.question.list.index',['questions'=>Question::orderBy($column,'desc')->get()]);
+    }
+
+    //同问
+    public function same_ask(Request $request){
+        $formData['question_id'] = $request->input('question_id');
+        $formData['user_id'] = Auth::id();
+        try {
+            Sameask::create($formData);
+            Question::where('id',$formData['question_id'])->increment('same_ask');
+            $num = Question::where('id',$formData['question_id'])->get(['same_ask']);
+            return ['msg'=>$num[0]['same_ask']];
+        }catch (\Exception $e){
+            return ['msg'=>'您已经问过了'];
+        }
     }
 }

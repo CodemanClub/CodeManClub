@@ -4,7 +4,11 @@
             <a href="{{config('custom.root_url')}}/article/getArticleById/{{$article->id}}" style="color: black">
                 <h3 class="list-group-item">{{$article->title}}</h3>
             </a>
-            <li class="list-group-item">作者：{{\App\User::find($article->post_man_id)->name}}</li>
+            <li class="list-group-item">作者：
+                <a href="{{config('custom.root_url')}}/user/center/{{\Illuminate\Support\Facades\Auth::id()}}/article">
+                {{\App\User::find($article->post_man_id)->name}}
+                </a>
+            </li>
             <li class="list-group-item">
                 编辑状态：
                 @if($article->status_id==2)

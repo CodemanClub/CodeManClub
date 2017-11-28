@@ -19,6 +19,8 @@
     <div class="container">
         <div id="wordsView" style=" max-width:800px; width:100%;background-color: #fcfaf2">
             <h3>{{ $question->title }}</h3>
+            <button onclick="same_ask({{$question->id}})" type="button" class="btn btn-primary" style="float: right"><span id="same_user_num">{{$question->same_ask}}人同问</span></button>
+
             <h5>提问者：{{\App\User::find($question->post_man_id)->name}}</h5>
             <textarea name="content">{{$question->content}}</textarea>
         </div>
@@ -40,5 +42,24 @@
                 sequenceDiagram : true,  // 默认不解析
             });
         })
+        //点击同问时，调用这个方法
+        same_ask = function(id){
+            $.ajax({
+                url:"{{config('custom.root_url')}}/question/same/ask",
+                data:{
+                    question_id: id
+                } ,
+                method:'get',
+                success:function (res) {
+                    $('#same_user_num').html(res.msg);
+                },
+                error:function(xhr,status,error){
+                    if (error=='Unauthorized'){ //if not logon,jump to login page
+                        $(location).attr('href', '{{config('custom.root_url')}}/user/login');
+                    }
+                }
+
+            })
+        }
     </script>
 @endsection

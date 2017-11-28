@@ -26,7 +26,7 @@
                     <a class="nav-link" href="{{config('custom.root_url')}}/">文 章 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{config('custom.root_url')}}/question/list">问 题</a>
+                    <a class="nav-link" href="{{config('custom.root_url')}}/question/list/updated_at">问 题</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{config('custom.root_url')}}/group/list">小 组</a>

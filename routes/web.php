@@ -70,9 +70,11 @@ Route::any('group/in_or_out/{group_id}','GroupController@in_or_out')->middleware
  */
 //提出问题
 Route::any('question/ask','QuestionController@ask')->middleware('auth');
+//同问
+Route::any('question/same/ask','QuestionController@same_ask')->middleware('auth');
 //获取问题详细内容及答案
 Route::any('question/content/{id}','QuestionController@getContent');
-Route::any('question/list','QuestionController@getList');
+Route::any('question/list/{cloumn}','QuestionController@getList');
 
 
 /**

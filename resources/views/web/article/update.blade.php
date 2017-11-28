@@ -47,6 +47,7 @@
                 path : "{{config('custom.root_url')}}/../editor/lib/",// Autoload modules mode, codemirror, marked... dependents libs path
                 emoji : true,
                 height: 500,
+                flowChart : true,             // 开启流程图支持，默认关闭
                 theme : "dark",
                 // Preview container theme, added v1.5.0
                 // You can also custom css class .editormd-preview-theme-xxxx

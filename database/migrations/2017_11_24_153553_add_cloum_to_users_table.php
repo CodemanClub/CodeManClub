@@ -16,7 +16,7 @@ class AddCloumToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->addColumn('string','intro',['length'=>255])->nullable();
             $table->addColumn('string','avatar',['length'=>255])->defualt('http://www.photophoto.cn/m15/032/004/0320040163.jpg');
-            $table->addColumn('string','main_intrersting',['length'=>255])->nullable();
+            $table->addColumn('string','main_interesting',['length'=>255])->nullable();
             $table->addColumn('string','occupation',['length'=>255])->nullable();
             $table->addColumn('string','company_or_school',['length'=>255])->nullable();
         });

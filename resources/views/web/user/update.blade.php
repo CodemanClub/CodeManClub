@@ -12,7 +12,7 @@
             <form id="upload_form" enctype='multipart/form-data'>
                 <div class="form-group">
                     <label>头像</label>
-                    <img width="80px" id="avatar" src="{{$user->avatar?config('custom.root_url').'/'.$user->avatar:'http://www.photophoto.cn/m15/032/004/0320040163.jpg'}}" alt="头像" class="form-control rounded-circle">
+                    <img width="80px" id="avatar" src="{{$user->avatar?config('custom.root_path').$user->avatar:'http://www.photophoto.cn/m15/032/004/0320040163.jpg'}}" alt="头像" class="form-control rounded-circle">
                     <label class="custom-file">
                         <input type="file" id="avatar_input" class="custom-file-input">
                         <span class="custom-file-control"></span>
@@ -38,8 +38,7 @@
                     <label>主要兴趣</label>
                     <input type="text" name="main_interesting" class="form-control" value="{{$user->main_interesting}}">
                 </div>
-
-                <small id="emailHelp" class="form-text text-muted">未经您的同意，谁也看不到下列的信息.</small>
+                
 
                 <div class="form-group">
                     <label>职业</label>
@@ -68,7 +67,8 @@
                         contentType: false,
                         success:function (res) {
                             console.log(res);
-                            $('#avatar').attr('src',"{{config('custom.root_url')}}/"+res);
+                            console.log("{{config('custom.root_path')}}"+res)
+                            $('#avatar').attr('src',"{{config('custom.root_path')}}"+res);
                             $("#avartar_form").val(res);
                         }
                     });

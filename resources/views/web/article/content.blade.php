@@ -25,7 +25,11 @@
                     </div>
                 @endif
                 <h3>{{ $article->title }}</h3>
-                <h4>作者：{{\App\User::find($article->post_man_id)->name}}</h4>
+                <h4>作者：
+                    <a href="{{config('custom.root_url')}}/user/center/{{\Illuminate\Support\Facades\Auth::id()}}/article">
+                    {{\App\User::find($article->post_man_id)->name}}
+                    </a>
+                </h4>
                 <textarea name="content">{{$article->content}}</textarea>
             </div>
             <button id="help_to_me" onclick="help_to_me()" type="button" class="btn btn-success">对我有帮助</button>

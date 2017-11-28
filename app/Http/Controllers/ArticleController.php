@@ -32,15 +32,7 @@ class ArticleController extends Controller
      */
     public function post(Request $request){
         if ($request->isMethod('post')){
-//            $validateRules = [
-//                'title' => 'required|min:2|max:128',
-//                'content' => 'required|min:6'
-//            ];
-//            $this->validate($request,$validateRules);
-//            $formData = $request->all();
-//            $formData['post_man_id'] = Auth::id();
-//            $formData['status_id'] = 2;
-//            $formData['created_at']=$formData['updated_at']=date('Y-m-d H:i:s',time());
+
             $formData = $this->getFormData($request);
             if ($formData['id']==null){
                 $article = Article::create($formData);
@@ -63,15 +55,6 @@ class ArticleController extends Controller
     public function updateArticle(Request $request){
         $id = $request->input('id');
         if ($request->isMethod('post')){
-//            $validateRules = [
-//                'title' => 'required|min:2|max:128',
-//                'content' => 'required|min:6'
-//            ];
-//            $this->validate($request,$validateRules);
-//            $formData = $request->all();
-//            $formData['post_man_id'] = Auth::id();
-//            $formData['status_id'] = 2;
-//            $formData['created_at']=$formData['updated_at']=date('Y-m-d H:i:s',time());
             $formData = $this->getFormData($request);
             array_forget($formData,'_token');
             try{
@@ -121,7 +104,7 @@ class ArticleController extends Controller
         if (Auth::id()==$user_id)//相等说明用户正在查阅自己的文章列表
             $articles = Article::where('post_man_id',$user_id)->get();
         else
-            $articles = Article::where(['post_man_id'=>$user_id,'status_id'=>2,'is_del'=>0])->get();
+            $articles = Article::where(['post_man_id'=>$user_id,'status_id'=>2,'is_del'=>0])->orderBy('updated_at','desc')->get();
         $articleList = [];
         foreach ($articles as $a){
             $a->author=$author;

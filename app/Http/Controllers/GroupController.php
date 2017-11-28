@@ -53,13 +53,13 @@ class GroupController extends Controller
     public function getGroupContent($id,$type){
         $group = Group::find($id);
         if ('article'===$type){
-            $types = $group->articles()->where('status_id',2)->get();
+            $types = $group->articles()->where('status_id',2)->orderBy('updated_at','desc')->get();
         }
         if ('question'===$type){
-            $types = $group->questions;
+            $types = $group->questions()->orderBy('updated_at','desc')->get();
         }
         if ('user'===$type){
-            $types = $group->users;
+            $types = $group->users()->orderBy('updated_at','desc')->get();;
         }
 
         return view('web.group.content.index',

@@ -14,7 +14,7 @@ class IndexController extends Controller
      * 2.点击量高的
      */
     public function index(){
-        return view('web.index.index',['articles'=>Article::where(['is_del'=>0,'status_id'=>2])->get()]);
+        return view('web.index.index',['articles'=>Article::where(['is_del'=>0,'status_id'=>2])->orderBy('updated_at','desc')->get()]);
     }
     /**
      *首页ask内容展示
