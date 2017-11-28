@@ -42,6 +42,10 @@ return [
     */
 
     'disks' => [
+        'avatar' => [
+            'driver' => 'local',
+            'root'   => public_path('avatar'),
+        ],
 
         'local' => [
             'driver' => 'local',

@@ -110,4 +110,23 @@ class UserController extends Controller
         }
         return view('web.user.center.index',['user'=>$user,'types'=>$types,'type'=>$type]);
     }
+    //更新自己的资料
+    public function update_me(Request $request){
+        if ($request->isMethod('post')){
+            $formData = $request->all();
+            array_forget($formData,'_token');
+
+            foreach ($formData as $k => $v){
+                if (!$v){
+                    array_forget($formData,$k);
+                }
+            }
+
+            User::where('id',Auth::id())->update($formData);
+            return redirect()->to('/user/center/'.Auth::id().'/article');
+        }else{
+            return view('web.user.update',['user'=>Auth::user()]);
+        }
+    }
+
 }

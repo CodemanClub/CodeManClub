@@ -67,6 +67,7 @@
                 var article_id = $(" input[ name='id'] ").val()
             if (title_val&&content_val)
                 $.ajax({
+                    headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' },
                     url:"{{config('custom.root_url')}}/article/autosave",
                     data: { title: title_val,content:content_val,id:article_id },
                     method:'post',

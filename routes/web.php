@@ -27,6 +27,8 @@ Route::any('user/logout', 'UserController@logout');
 Route::any('/login', 'UserController@login');
 //用户进入用户中心页面
 Route::any('/user/center/{user_id}/{type}','UserController@center');
+//修改个人资料
+Route::any('/user/update','UserController@update_me')->middleware('auth');
 
 /**
  * Article路由
@@ -79,6 +81,13 @@ Route::any('question/list','QuestionController@getList');
 Route::post('answer/answer','AnswerController@answer')->middleware('auth');
 //支持回答
 Route::post('answer/work_for_me','AnswerController@work_for_me')->middleware('auth');
+
+
+/**
+ *文件控制器路由
+ */
+Route::post('file/uploade/avatar','FileController@avatar_uploade');
+
 /**
  * 测试控制器
  */
@@ -95,6 +104,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 /**
 *404
 */
-Route::any('/',function(){
-	return view('errors.404');
-});
+//Route::any('/',function(){
+//	return view('errors.404');
+//});
