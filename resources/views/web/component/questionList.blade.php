@@ -1,3 +1,12 @@
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?0326d73869f0e1c42057054038f66fc9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 <ul class="list-group">
     @foreach($questionList as $question)
         <div class="form-group" style="width: 100%">

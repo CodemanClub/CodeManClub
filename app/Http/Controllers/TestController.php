@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail;
+use Illuminate\Support\Facades\Redis;
 
 class TestController extends Controller
 {
@@ -20,5 +21,22 @@ class TestController extends Controller
         $smtp           = new Mail($smtpserver, $smtpserverport, true, $smtpuser, $smtppass);
         $smtp->debug    = false;
         $smtp->sendmail($mailto, $smtpusermail, $mailsubject, $mailbody, $mailtype);
+    }
+
+    public function test_redis(){
+        Redis::set('name', 'Taylor');
+        $values = Redis::get('name');
+        return $values;
+    }
+
+    public function map($id){
+        if ($id==1){
+            return view('test.map');
+        }
+        if ($id==2){
+            Redis::geoadd('Sicily',13.361389,38.115556);
+            Redis::geoadd("Palermo",15.087269,37.502669 );
+
+        }
     }
 }

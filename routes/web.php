@@ -94,7 +94,12 @@ Route::post('file/uploade/avatar','FileController@avatar_uploade');
  * 测试控制器
  */
 Route::any('test/email','TestController@emailTest');
+Route::any('test/redis','TestController@test_redis');
+Route::any('test/map/{id}','TestController@map');
 
+Route::get('phpinfo',function (){
+    phpinfo();
+});
 
 Route::get('notAuthor',function (){
     return view('NotAuthor');

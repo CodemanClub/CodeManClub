@@ -6,7 +6,15 @@
 
 @section('content')
 <div class="container">
-
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0326d73869f0e1c42057054038f66fc9";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
     <link rel="stylesheet" href="{{config('custom.root_url')}}/../editor/css/editormd.min.css">
     <script src="{{config('custom.root_url')}}/../editor/editormd.min.js"></script>
 

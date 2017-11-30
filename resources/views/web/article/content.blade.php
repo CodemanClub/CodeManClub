@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0326d73869f0e1c42057054038f66fc9";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 <div class="container">
     {{--<link rel="stylesheet" href="http://codemanclub.com/css/article.css">--}}
     <div class="view-content">
@@ -26,7 +35,7 @@
                 @endif
                 <h3>{{ $article->title }}</h3>
                 <h4>作者：
-                    <a href="{{config('custom.root_url')}}/user/center/{{\Illuminate\Support\Facades\Auth::id()}}/article">
+                    <a href="{{config('custom.root_url')}}/user/center/{{$article->post_man_id}}/article">
                     {{\App\User::find($article->post_man_id)->name}}
                     </a>
                 </h4>

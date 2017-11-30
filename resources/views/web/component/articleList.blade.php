@@ -1,3 +1,12 @@
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?0326d73869f0e1c42057054038f66fc9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 <ul class="list-group">
     @foreach($articleList as $article)
         <div class="form-group" style="width: 100%">
@@ -5,7 +14,7 @@
                 <h3 class="list-group-item">{{$article->title}}</h3>
             </a>
             <li class="list-group-item">作者：
-                <a href="{{config('custom.root_url')}}/user/center/{{\Illuminate\Support\Facades\Auth::id()}}/article">
+                <a href="{{config('custom.root_url')}}/user/center/{{$article->post_man_id}}/article">
                 {{\App\User::find($article->post_man_id)->name}}
                 </a>
             </li>
