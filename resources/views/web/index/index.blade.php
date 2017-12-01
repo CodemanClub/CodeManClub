@@ -1,8 +1,10 @@
 @component('web.head')@endcomponent
-<link rel="stylesheet" type="text/css" href="{{config('custom.root_url')}}/../css/user_center.css">
 
-<div class="container">
-	<div class="left">
+<div class="container" style="margin-top: 20px">
+	<div style="max-width: 700px;width: 100%;float: left">
     	@component('web.component.articleList',['articleList'=>$articles])@endcomponent
+    </div>
+    <div style="float: right">
+        @component('web.component.location')@endcomponent
     </div>
 </div>

@@ -91,6 +91,13 @@ Route::post('answer/work_for_me','AnswerController@work_for_me')->middleware('au
 Route::post('file/uploade/avatar','FileController@avatar_uploade');
 
 /**
+ * 地图控制器路由
+ */
+Route::any('map/open_or_close','MapController@open_or_close')->middleware('auth');
+Route::post('map/post/location','MapController@get_user_location')->middleware('auth');
+Route::post('map/get/near_users','MapController@find_nearby')->middleware('auth');
+
+/**
  * 测试控制器
  */
 Route::any('test/email','TestController@emailTest');

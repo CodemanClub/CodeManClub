@@ -34,8 +34,9 @@ class TestController extends Controller
             return view('test.map');
         }
         if ($id==2){
-            Redis::geoadd('Sicily',13.361389,38.115556);
-            Redis::geoadd("Palermo",15.087269,37.502669 );
+            Redis::geoadd('user_ids',13.361389,38.115556,1);
+            Redis::geoadd("user_ids",13.361389,38.115557,2);
+            return Redis::GEORADIUSBYMEMBER('user_ids',1,10,'km');
 
         }
     }
